@@ -1,0 +1,136 @@
+:root {
+  --text-color: red;
+}
+@bg-color: #202020;
+
+@bg-second-color: #2D2D2D;
+@bg-panel-color: #f2f2f2;
+
+@highlight-color: #398dee;
+
+@warn-color: #F4606C;
+@border-color: #eee;
+@form-color: #dcdcdc;
+
+@primary-color: #313131;
+
+@primary-test-color: @primary-color;
+
+@primary-bg-color: @primary-color;
+
+@padding-size: 7px;
+
+@font-primary-color: #515a6e;
+
+@font-pre-color: #000;
+
+@border-color: #e1e4e8;
+
+/*主题颜色*/
+@tree-bg-color: #2D2D2D;
+@tree-color: #919191;
+@tree-light-color: #DDDDDD;
+@tree-light-bg-color: #5f5f5f;
+@tree-hover-bg-color: #404040;
+
+/*简介*/
+@article-brief-light-bg: #19181D;
+
+
+.markdown-style{
+  overflow: auto;
+  background: #fff;
+  .markdown-content-style{
+    padding: 0 20px 20px 20px;
+    min-height: 100%;
+  }
+  code{
+    color: #525252;
+    display: inline-block;
+    padding: 2px 5px;
+    border: solid 1px #e7e4e4;
+    margin: 1px 4px;
+  }
+  pre{
+    padding: 10px;
+    background: #2D2D2D;
+    border-radius: 4px;
+    code{
+      color: #fff;
+      display: block;
+      padding: 0;
+      border: none;
+      margin: 0;
+    }
+  }
+  blockquote{
+    padding: 10px 18px;
+    margin: 0;
+    position: relative;
+    background: #f5f4f4;
+    color: #636363;
+    p{
+      margin: 0;
+    }
+  }
+  blockquote:after{
+    content: '';
+    position: absolute;
+    width: 3px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: @highlight-color;
+  }
+  ul, ol{
+    padding-left: 30px;
+    ul, ol{
+      padding-left: 20px;
+    }
+  }
+
+  table{
+    width: 100%;
+  }
+  table td, table th {
+    text-align: left;
+    padding:10px; /* 控制cellpadding-单元格间距*/
+  }
+  table th {
+    background: @bg-second-color;
+    font-weight: normal;
+    color: #fff;
+    word-break: keep-all;   /*th里的内容强制不换行，即最小宽度为字段宽度*/
+  }
+  table td {
+    white-space: normal;
+    word-break: break-all;
+    font-size: 14px;
+    padding: 10px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*background-clip: padding-box;*/
+  }
+  table tr:nth-child(even){  background: #fafafa;  }
+  /*保持单行，超出显示省略号*/
+  table{table-layout: fixed}
+  .marked-checkBox{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    background: #5f5f5f;
+    margin-right: 5px;
+    cursor: pointer;
+    position: relative;
+    transform: translateY(3px);
+  }
+  .marked-checkBox .iconfont{
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    transform: translateX(2px);
+  }
+}
