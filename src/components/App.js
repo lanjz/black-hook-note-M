@@ -4,21 +4,27 @@ import {
 	Route,
 	Switch,
 } from 'react-router-dom'
-// import './App.css';
-/*import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'*/
+import '../assets/global.less';
+import '../assets/app.less';
+import '../assets/components.less';
 import Note from '../page/note/Note'
-import Test from '../page/test'
+import Header from '../components/Header'
 
 function App() {
 	return (
-		<BrowserRouter>
-			<Switch>
-				{/*<Route path="/" component={Home}/>*/}
-				<Route path="/:bookId/:catalogId/:noteId"  component={Note}/>
-			</Switch>
-		</BrowserRouter>
+		<div className="app">
+			<Header></Header>
+			<div className="main-content">
+				<BrowserRouter>
+					<Switch>
+						<Route path="/:bookId/:catalogId/:noteId"  component={Note}/>
+						{/*<Route path="/" component={Home}/>*/}
+					
+					</Switch>
+				</BrowserRouter>
+			</div>
+		</div>
+		
 	);
 }
 

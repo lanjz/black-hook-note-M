@@ -1,0 +1,56 @@
+@import "./global";
+
+/*note-brief-layout*/
+.note-brief-layout{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  border-right: solid 1px @border-color;
+  height: 100%;
+  z-index: 11;
+  padding: 15px 0;
+  background: @bg-second-color;
+  color: @tree-color;
+  transition: .3s ;
+  overflow-y: auto;
+}
+.note-item {
+  padding: 10px 20px;
+  width: 100%;
+  cursor: pointer;
+
+  position: relative;
+  border-bottom: solid 1px #000;
+  .note-item-title {
+    font-size: 17px;
+    color: @tree-light-color;
+  }
+  .note-item-mark {
+    margin-top: 7px;
+    font-size: 12px;
+  }
+  .operate-icon{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    right: 7px;
+    top: 7px;
+    position: absolute;
+    z-index: 1;
+    background: #5f5f5f;
+    opacity: 0;
+    transform: scale(0);
+    transition: .3s;
+    text-align: center;
+    line-height: 30px;
+    color: @note-brief-light-bg;
+    .iconfont{
+      font-size: 18px;
+    }
+  }
+  .operate-icon:hover{
+    background: @warn-color;
+    color: #fff;
+  }
+}

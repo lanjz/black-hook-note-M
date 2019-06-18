@@ -1,7 +1,6 @@
 import React from 'react'
 import marked from 'marked'
 import hljs from 'highlight.js'
-import './markdown.less'
 
 const renderer = new marked.Renderer()
 marked.setOptions({
