@@ -15,7 +15,8 @@
   transition: .3s ;
   overflow-y: auto;
 }
-.note-item {
+
+.note-item{
   padding: 10px 20px;
   width: 100%;
   cursor: pointer;
@@ -53,4 +54,35 @@
     background: @warn-color;
     color: #fff;
   }
+}
+
+.note-item.act {
+  background: @note-brief-light-bg;
+}
+
+.note-layout-input-box{
+  background: @tree-light-bg-color;
+  color: @tree-light-color;
+  width: 90%;
+  height: 40px;
+  padding: 0 10px;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  .iconfont{
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.note-layout-input{
+  height: 100%;
+  border: none;
+  background: transparent;
+  display: inline-block;
+  color: @tree-light-color;
+  outline: #fff;
+  padding-right: 46px;
 }

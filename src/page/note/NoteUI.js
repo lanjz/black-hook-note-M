@@ -9,6 +9,7 @@ class NoteUI extends React.Component{
 		this.init()
 	}
 	init() {
+		console.log('this.props33', this.props)
 		const { bookId, catalogId, noteId } = this.props.match.params
 		this.props.BOOK_CUR_UPDATE(bookId)
 		this.props.CATALOGS_CUR_SAVE(catalogId)

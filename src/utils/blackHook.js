@@ -1,3 +1,7 @@
+import { createBrowserHistory } from 'history'
+// console.log('history', history)
+export const RouterHistory = createBrowserHistory()
+
 function baseTimestampToTime(stamps, format) {
 	if(!stamps){
 		return ''

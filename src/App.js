@@ -1,26 +1,47 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+	BrowserRouter,
+	Route,
+	Switch,
+} from 'react-router-dom'
+import './assets/global.less';
+import './assets/app.less';
+import './assets/components.less';
+import Note from "./page/note/Note";
+import Header from './components/Header'
+
+
+class Index extends React.Component{
+	constructor(props) {
+		super(props)
+	}
+	componentDidMount() {
+	}
+	render() {
+		return (
+			<div>
+				<Header {...this.props}></Header>
+				<div className="main-content">
+					<Switch>
+						<Route path="/:bookId/:catalogId/:noteId" component={Note}/>
+					</Switch>
+				</div>
+			</div>
+		);
+	}
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<div className="app">
+			<BrowserRouter>
+				<Switch>
+					<Route path="/" component={Index}/>
+				</Switch>
+			</BrowserRouter>
+		</div>
+	
+	);
 }
 
 export default App;
