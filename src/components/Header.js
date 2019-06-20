@@ -4,8 +4,10 @@ class Header extends React.Component{
 	constructor(props) {
 		super(props)
 	}
-	openCom = (arg) => {
+	openCom = (arg, e) => {
+		console.log('e', e)
 		this.props.openCom(arg)
+		e.stopPropagation()
 	}
 	render() {
 		return (

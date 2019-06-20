@@ -25,6 +25,7 @@ class NoteUI extends React.Component {
 	}
 	
 	onClickOutsideHandler = (event) => {
+		console.log('!this.toggleContainer.current.contains(event.target)', !this.toggleContainer.current.contains(event.target))
 		if((this.state.openBrief || this.state.openBook || this.state.openCatalogs)
 			&& !this.toggleContainer.current.contains(event.target)) {
 			this.setState({
@@ -84,7 +85,7 @@ class NoteUI extends React.Component {
 	render() {
 		const curNote = this.props.notes.curNote ? this.props.notes.notesMap[this.props.notes.curNote] : ''
 		return (
-			<div ref={this.toggleContainer}>
+			<div>
 				<Header openCom={this.openCom}></Header>
 				{
 					this.state.noData ?
@@ -98,14 +99,17 @@ class NoteUI extends React.Component {
 							</div>
 						</div>
 				}
-				<div>
-					{this.state.openBrief &&
-					<NoteBriefUI {...this.props} gotoNote={this.gotoNoteFromNote}></NoteBriefUI>}
+				<div ref={this.toggleContainer}>
+					<div>
+						{this.state.openBrief &&
+						<NoteBriefUI {...this.props} gotoNote={this.gotoNoteFromNote}></NoteBriefUI>}
+					</div>
+					<div>
+						{this.state.openCatalogs &&
+						<CatalogsUI {...this.props} gotoNote={this.gotoNoteFromCatalogs}></CatalogsUI>}
+					</div>
 				</div>
-				<div>
-					{this.state.openCatalogs &&
-					<CatalogsUI {...this.props} gotoNote={this.gotoNoteFromCatalogs}></CatalogsUI>}
-				</div>
+			
 			</div>
 		
 		)
