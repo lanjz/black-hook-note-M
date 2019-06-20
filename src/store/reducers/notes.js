@@ -12,15 +12,16 @@ const defaultState = {
 export default (state = defaultState,  { type, payload }) => {
 	if(type === MUTATIONS.NOTE_LIST_SAVE) {
 		const  { data, start, key } = payload
-		const list = JSON.parse(JSON.stringify(state.list))
-		const notesMap = JSON.parse(JSON.stringify(state.list))
-		list[key] = data
+		const notesMap = JSON.parse(JSON.stringify(state.notesMap))
 		data.forEach(item => {
 			notesMap[item._id] = item
 		})
 		return {
 			...state,
-			list,
+			list: {
+				...state.list,
+				[key]: data
+			},
 			notesMap
 		}
 	}

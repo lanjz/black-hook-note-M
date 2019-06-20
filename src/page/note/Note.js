@@ -8,12 +8,18 @@ import {
 	NOTES_RECENTLY_GET,
 	NOTE_CUR_UPDATE
 } from '../../store/reducers/notes'
-import { CATALOGS_CUR_SAVE } from '../../store/reducers/catalogs'
+import { CATALOGS_CUR_SAVE, CATALOGS_GET } from '../../store/reducers/catalogs'
 import { BOOK_CUR_UPDATE } from '../../store/reducers/books'
 
 const mapStateToProps = state => ({
 	notes: {
 		...state.notes
+	},
+	catalogs: {
+		...state.catalogs
+	},
+	books: {
+		...state.books
 	}
 })
 const mapDispatchToProps = dispatch => ({
@@ -37,7 +43,11 @@ const mapDispatchToProps = dispatch => ({
 	},
 	BOOK_CUR_UPDATE(arg) {
 		return dispatch(BOOK_CUR_UPDATE(arg))
+	},
+	CATALOGS_GET(arg){
+		return dispatch(CATALOGS_GET(arg))
 	}
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteUI)
+export const connectMid = connect(mapStateToProps, mapDispatchToProps)
+export default connectMid(NoteUI)

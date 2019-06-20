@@ -31,3 +31,17 @@ export function timestampToBriefTime(stamps, format) {
 	const getDate =  baseTimestampToTime(stamps, 'YYYY.MM.DD')
 	return getDate ? getDate.substring(2) : ''
 }
+
+export function getQuery(key) {
+	if(!window) return ''
+	const search = window.location.search.slice(1)
+	const searchSplit = search.split('&')
+	if(!searchSplit.length) return ''
+	const data = {}
+	searchSplit.forEach(item => {
+		const itemSplit = item.split('=')
+		data[itemSplit[0]] = itemSplit[1]
+	})
+	return key ? data[key] : data
+	
+}

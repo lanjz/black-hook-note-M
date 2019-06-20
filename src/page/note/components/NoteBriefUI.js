@@ -1,21 +1,6 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { RouterHistory, timestampToBriefTime } from '../../../utils/blackHook'
-const mapStateToProps = state => ({
-	notes: {
-		...state.notes
-	},
-	catalogs: {
-		...state.catalogs
-	},
-	books: {
-		...state.books
-	}
-})
-const mapDispatchToProps = dispatch => ({
-})
-
-class NoteUI extends React.Component{
+import { timestampToBriefTime } from '../../../utils/blackHook'
+class NoteBriefUI extends React.Component{
 	constructor(props) {
 		super(props)
 	}
@@ -25,10 +10,7 @@ class NoteUI extends React.Component{
 		return bookList[id] ? bookList[id].name : ''
 	}
 	gotoNote = (item) => {
-		const pathnameArr = window.location.pathname.split('/')
-		pathnameArr[3] = item._id
-		const pathnameStr = pathnameArr.join('/')
-		RouterHistory.push(pathnameStr)
+		this.props.gotoNote(item)
 	}
 	render() {
 		const { books, catalogs } = this.props
@@ -44,7 +26,7 @@ class NoteUI extends React.Component{
 					<div className="absolute-full article-item-box" id="article-item-box">
 						{books&&list&&list.map((item, index) => (
 							<div className={ item._id === curNote ? "note-item act" : "note-item"} key={index} onClick={this.gotoNote.bind(this, item)}>
-								<div className="note-item-title">{item._id}</div>
+								<div className="note-item-title">{item.title}</div>
 								<div className="note-label">
 									<span className="note-label-item">{this.getBookName(item.bookId, books.list)}</span>
 								</div>
@@ -58,4 +40,4 @@ class NoteUI extends React.Component{
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteUI)
+export default NoteBriefUI

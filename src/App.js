@@ -8,39 +8,21 @@ import './assets/global.less';
 import './assets/app.less';
 import './assets/components.less';
 import Note from "./page/note/Note";
-import Header from './components/Header'
+import Catalog from "./page/catalog/Catalog";
+import Login from "./page/login/Login";
 
-
-class Index extends React.Component{
-	constructor(props) {
-		super(props)
-	}
-	componentDidMount() {
-	}
-	render() {
-		return (
-			<div>
-				<Header {...this.props}></Header>
-				<div className="main-content">
-					<Switch>
-						<Route path="/:bookId/:catalogId/:noteId" component={Note}/>
-					</Switch>
-				</div>
-			</div>
-		);
-	}
-}
 
 function App() {
 	return (
 		<div className="app">
 			<BrowserRouter>
 				<Switch>
-					<Route path="/" component={Index}/>
+					<Route path="/:bookId/:catalogId/:noteId" component={Note}/>
+					<Route path="/:bookId/:catalogId" component={Catalog}/>
+					<Route path="/login" component={Login}/>
 				</Switch>
 			</BrowserRouter>
 		</div>
-	
 	);
 }
 

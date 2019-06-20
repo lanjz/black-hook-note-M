@@ -15,6 +15,7 @@ const defaultState = {
 
 export default (state = defaultState,  { type, payload }) => {
 	if(type === MUTATIONS.CATALOGS_SAVE) {
+		console.log('payload', payload)
 		const { curNode, data, bookId } = payload
 		const key = curNode.parentId === 'root' ? bookId+'_root' : curNode.parentId
 		const list = {
@@ -88,8 +89,10 @@ export default (state = defaultState,  { type, payload }) => {
 export function CATALOGS_GET( params = {}) {
 	return async (dispatch, getState) => {
 		const rootState = getState()
-		const state = rootState.notes
-		let { force = false, parentId = rootState.books.curBook+'_root', bookId =  rootState.books.curBook } = params
+		const state = rootState.catalogs
+		params.parentId = params.parentId || rootState.books.curBook+'_root'
+		params.bookId = params.bookId || rootState.books.curBook
+		let { force = false, parentId, bookId} = params
 		if(!force && state.list[params.parentId] && state.list[params.parentId].childNodes) {
 			return {
 				err: null,

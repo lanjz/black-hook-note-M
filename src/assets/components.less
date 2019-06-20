@@ -86,3 +86,73 @@
   outline: #fff;
   padding-right: 46px;
 }
+.no-data{
+  flex: 1;
+  font-size: 20px;
+  padding: 20px;
+  color: #7e8896;
+  background: #faf9f9;
+  .iconfont{
+    font-size: 100px;
+  }
+  .create-btn{
+    color: @highlight-color;
+    cursor: pointer;
+  }
+}
+
+/*登录*/
+.login-btn-layout{
+  padding: 0 10px;
+}
+.login-btn{
+  line-height: 40px;
+  color: #fff;
+  background: @highlight-color;
+  text-align: center;
+  font-size: 18px;
+  margin: 40px auto;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.login-btn.disable{
+  background: #babbbd;
+}
+.avatar-layout{
+  margin: 40px auto 30px auto;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  color: @bg-panel-color;
+  img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+.form-group{
+  margin-top: 40px;
+}
+
+/*Tree*/
+.catalogs-layout{
+  margin-top: 10px;
+  padding: 0 20px;
+  .iconfont {
+    font-size: 25px;
+    position: relative;
+    margin-right: 5px;
+  }
+  .catalogs-name {
+    position: relative;
+    max-width: 150px;
+  }
+  .act .catalogs-name{
+    border-bottom: solid 1px @highlight-color;
+  }
+
+}
+.catalogs-layout .catalogs-layout{
+  padding-left: 20px;
+}

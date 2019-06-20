@@ -148,7 +148,12 @@ body{
 }
 
 /*我的表单*/
-.form-layout{  position: relative;  }
+.form-layout{
+  position: relative;  width: 100%;
+  .padding-input{
+    padding-right: 20px;
+  }
+}
 .form-group:not(:first-child){
   margin-top: 18px;
 }
@@ -158,7 +163,7 @@ body{
   padding: 8px 10px;
 }
 .from-select, .form-input{
-  width: 350px;
+  width: 100%;
   height: 40px;
   border-radius: 4px;
   border: solid 1px @form-color;

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { HOST_CONFIG as hostConfig } from './fetchConifg'
-
+axios.defaults.withCredentials = true
 function helloAlert(msg) { alert(msg.title) }
 
 const { MOCK } = process.env
@@ -9,11 +9,7 @@ function dealRetCode(response = {}) {
   if (response.retCode === 4) {
     res.notAlert = true
     res.err = new Error('未登录')
-    if (process.client) {
-	// todo
-	// window.location.reload()
-	// window.location.href = '/login'
-    }
+  	window.location.href = '/login?back=1'
     return res
   }
   if (response.retCode !== 1) {
