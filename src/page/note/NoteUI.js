@@ -3,6 +3,8 @@ import NoteDes from './components/NoteDes'
 import Header from "../../components/Header";
 import NoteBriefUI from '../note/components/NoteBriefUI'
 import CatalogsUI from '../note/components/CatalogsUI'
+import BooksUI from '../note/components/BooksUI'
+import constKey from "../../utils/const";
 
 class NoteUI extends React.Component {
 	constructor(props) {
@@ -76,10 +78,19 @@ class NoteUI extends React.Component {
 		this.closeCom()
 	}
 	gotoNoteFromCatalogs = async (item) => {
-		const { notes, catalogs } = this.props
+		const { catalogs } = this.props
 		const { bookId } = this.props.match.params
+		this.closeCom()
 		if(catalogs.curCatalog === item._id) return
 		this.props.history.push(`/${bookId}/${item._id}`)
+	}
+	gotoNoteFromBooks = (item) => {
+		const { bookId } = this.props.match.params
+		this.closeCom()
+		if(bookId === item._id) return
+		this.props.BOOK_CUR_UPDATE(item._id)
+		this.props.history.push(`/${item._id}/${constKey.recentlyNoteKey }`)
+		
 	}
 	
 	render() {
@@ -94,9 +105,7 @@ class NoteUI extends React.Component {
 							<div>还没任何有笔记</div>
 						</div> :
 						<div className="main-content">
-							<div className="layout-padding">
-								{curNote && <NoteDes curNote={curNote}></NoteDes>}
-							</div>
+							{curNote && <NoteDes curNote={curNote}></NoteDes>}
 						</div>
 				}
 				<div ref={this.toggleContainer}>
@@ -107,6 +116,10 @@ class NoteUI extends React.Component {
 					<div>
 						{this.state.openCatalogs &&
 						<CatalogsUI {...this.props} gotoNote={this.gotoNoteFromCatalogs}></CatalogsUI>}
+					</div>
+					<div>
+						{this.state.openBook &&
+						<BooksUI {...this.props} gotoNote={this.gotoNoteFromBooks}></BooksUI>}
 					</div>
 				</div>
 			

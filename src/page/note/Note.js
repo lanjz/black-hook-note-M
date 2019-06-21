@@ -9,7 +9,7 @@ import {
 	NOTE_CUR_UPDATE
 } from '../../store/reducers/notes'
 import { CATALOGS_CUR_SAVE, CATALOGS_GET } from '../../store/reducers/catalogs'
-import { BOOK_CUR_UPDATE } from '../../store/reducers/books'
+import { BOOK_CUR_UPDATE, BOOK_LIST_GET } from '../../store/reducers/books'
 
 const mapStateToProps = state => ({
 	notes: {
@@ -46,6 +46,9 @@ const mapDispatchToProps = dispatch => ({
 	},
 	CATALOGS_GET(arg){
 		return dispatch(CATALOGS_GET(arg))
+	},
+	BOOK_LIST_GET(arg){
+		return dispatch(BOOK_LIST_GET(arg))
 	}
 })
 

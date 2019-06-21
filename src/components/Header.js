@@ -5,7 +5,6 @@ class Header extends React.Component{
 		super(props)
 	}
 	openCom = (arg, e) => {
-		console.log('e', e)
 		this.props.openCom(arg)
 		e.stopPropagation()
 	}
@@ -13,7 +12,7 @@ class Header extends React.Component{
 		return (
 			<div className="header-layout  flex align-items-center layout-padding" ref={this.toggleContainer}>
 				<div className="icon-layout">
-					<i className="iconfont icon-shuji"></i>
+					<i className="iconfont icon-shuji" onClick={this.openCom.bind(this, 'openBook')}></i>
 				</div>
 				<div className="icon-layout" onClick={this.openCom.bind(this, 'openCatalogs')}>
 					<i className="iconfont icon-neirong" ></i>

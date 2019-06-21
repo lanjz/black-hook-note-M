@@ -34,10 +34,14 @@ class NoteDes extends React.Component{
 			__html: DIYMarked(marked(this.props.curNote.content))
 		}
 		return (
-			<div className="markdown-style" >
-				<div dangerouslySetInnerHTML={MarkdownResult}></div>
+			<div>
+				<div  className="markdown-title">{this.props.curNote.title}</div>
+				<div className="layout-padding">
+					<div className="markdown-style" >
+						<div dangerouslySetInnerHTML={MarkdownResult}></div>
+					</div>
+				</div>
 			</div>
-			
 		)
 	}
 }
