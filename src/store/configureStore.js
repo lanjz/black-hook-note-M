@@ -3,16 +3,19 @@ import thunkmiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import reducer from './reducers/index'
 
-const devTools = require('remote-redux-devtools').default
+// const devTools = require('remote-redux-devtools').default
+const isPC = navigator.platform.indexOf('Win32')!=-1
+const composeArr = [applyMiddleware(thunkmiddleware)]
+/*if(isPC) {
+	composeArr.push(composeWithDevTools())
+}*/
 
 let store
 if (process.env.NODE_ENV === 'development') {
 	store = createStore(
 		reducer,
-		
 		compose(
-			applyMiddleware(thunkmiddleware),
-			composeWithDevTools(),
+			...composeArr
 		/*	devTools({
 				hostname: 'localhost',
 				port: 5678,

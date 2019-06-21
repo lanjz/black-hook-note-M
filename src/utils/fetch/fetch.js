@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { HOST_CONFIG as hostConfig } from './fetchConifg'
-axios.defaults.withCredentials = true
+
+const isDev = process.env.NODE_ENV === 'development'
+axios.defaults.withCredentials = isDev ? false : true
 function helloAlert(msg) { alert(msg.title) }
 
 const { MOCK } = process.env
@@ -29,8 +31,8 @@ function fetchData(options) {
   if (MOCK) {
     url = `http://67.209.187.22:3000/mock/15${url}`
   } else {
-    url = process.env.NODE_ENV === 'development' ?
-      `http://localhost:3001${url}` :
+    url = isDev ?
+      `http://10.5.23.29:3001${url}` :
       process.client ? `${url}`: `http://127.0.0.1:3001${url}`
   }
   options.url = url
