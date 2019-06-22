@@ -1,6 +1,5 @@
 import axios from 'axios'
-import { HOST_CONFIG as hostConfig } from './fetchConifg'
-
+import SET from '../hide/webSecret'
 const isDev = process.env.NODE_ENV === 'development'
 axios.defaults.withCredentials = isDev ? false : true
 function helloAlert(msg) { alert(msg.title) }
@@ -29,11 +28,9 @@ function fetchData(options) {
     return res
   }
   if (MOCK) {
-    url = `http://67.209.187.22:3000/mock/15${url}`
+    url = `${SET.base.mockHost}/mock/15${url}`
   } else {
-    url = isDev ?
-      `http://10.5.23.29:3001${url}` :
-      process.client ? `${url}`: `http://127.0.0.1:3001${url}`
+    url = isDev ? `http://${SET.base.devHost}${url}` : `${url}`
   }
   options.url = url
   options.method = options.method || 'get'
