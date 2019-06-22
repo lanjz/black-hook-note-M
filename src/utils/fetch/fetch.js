@@ -1,7 +1,7 @@
 import axios from 'axios'
 import SET from '../hide/webSecret'
 const isDev = process.env.NODE_ENV === 'development'
-axios.defaults.withCredentials = isDev ? false : true
+axios.defaults.withCredentials = isDev ? true : false
 function helloAlert(msg) { alert(msg.title) }
 
 const { MOCK } = process.env
